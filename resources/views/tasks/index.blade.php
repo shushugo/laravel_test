@@ -14,11 +14,14 @@
 
   <main>
     <p>今日何するの?</p>
-    <form action="tasks" method="post">
+    <form action="{{ route('tasks.store') }}" method="post">
       @csrf
       <label>
         <input type="text" name="task_name" placeholder="洗濯物をする・・">
-      </label>
+        @error('task_name')
+        {{ $message }}
+        @enderror
+      </label><br>
       <button type="submit">
         追加する
       </button>
